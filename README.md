@@ -3,20 +3,39 @@
 ##  Содержание
   * [**Начало установки**](#start)
   * [**Разметка диска**](#preparing-the-disk-for-system)
-    * [UEFI](#uefi)  
+    * [UEFI](#uefi)
   * [**Установка базовой системы**](#base-installation)
     * [Обновление зеркал](#update-mirrors)
     * [Базовая установка](#install-base-system)
     * [Создание fstab](#generate-fstab)
   * [**Chroot**](#chroot)
-    * [Активация Swap](#activate-swap)
+    * [Активация swap](#activate-swap)
     * [Установка даты и времени](#set-time--date)
     * [Установка языка](#set-language)
     * [Настройка имени хоста](#set-hostname)
-    * [Network Manager](#install--enable-networkmanager) 
-    * [ROOT Password](#set-root-password) 
-    * [GRUB Bootloader](#install-grub-bootloader) 
-      * [UEFI System](#for-uefi-system-1) 
+    * [Network Manager](#install--enable-networkmanager)
+    * [ROOT Password](#set-root-password)
+    * [GRUB Bootloader](#install-grub-bootloader)
+      * [UEFI System](#for-uefi-system-1)
+  * [**Загрузка установленной системы**](#load-system)
+    * [Добавить нового пользователя](#add-user)
+    * [Настройка sudo](#sudo-config)
+  * [**Войти под созданным пользователем**](#user-login)
+    * [Проверить подключение к Интернету](#check-internet)
+    * [Установка драйвера графического адаптера](#video-install)
+    * [Включить репозиторий Multilib](#enable-multilab-repo)
+    * [Экранный менеджер SDDM](#install-sddm)
+    * [Среда рабочего стола KDE Plasma](#install-kde)
+    * [Аудио-утилиты и Bluetooth](#audio-bluetooth)
+    * [Мои приложения](#my-app)
+  * [**Заключение**](#end)
+  * [**Дополнительно**](#extras)
+    * [Yay](#yay)
+    * [Zsh](#zsh)
+    * [Изменение Shell по умолчанию](#shell)
+    * [PipeWire](#pipewire)
+    * [EasyEffects](#EasyEffects)
+    * [Поддержка принтеров](#printers)
 </br>
 
 ## Начало устанвки
@@ -176,7 +195,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 ```
 arch-chroot /mnt
 ```
-### Активация Swap
+### Активация swap
 ```
 mkswap /dev/[swap partition name]
 Скопировать UUID
@@ -269,9 +288,9 @@ reboot
 ```
 </br>
 
-## Загрузиться в установленную систему
+## Загрузка установленной системы
 
-### Войти под ROOT
+### Войти под пользователем root
 
 ### Добавить нового пользователя
 ```
@@ -284,7 +303,7 @@ useradd -mG wheel [username]
 passwd [username]
 ```
 
-### Разрешить выполнение команд под sudo для группы Wheel
+### Разрешить выполнение команд под sudo для группы wheel
 ```
 EDITOR=nano visudo
 ```
@@ -402,11 +421,6 @@ sddm-kcm | Модуль KConfig (KCM), который интегрируется
 telegram-desktop | Telegram мессенджер
 skypeforlinux-stable-bin | Skype мессенджер
 
-#### Запуск сервера печати
-```
-sudo systemctl enable --now cups
-```
-
 ###  Заключение
 Теперь все установлено, и после перезагрузки вы попадете на экран входа в систему с графическим интерфейсом. Вы также можете выполнить несколько дополнительных шагов, упомянутых ниже, чтобы еще больше улучшить свой опыт.
 
@@ -452,6 +466,11 @@ sudo pacman -S cups print-manager system-config-printer
 - cups - Стандартная система печати с открытым исходным кодом
 - print-manager - Менеджер принтеров
 - system-config-printer - Настройки для принтеров
+
+### Запуск сервера печати
+```
+sudo systemctl enable --now cups
+```
 
 ## PipeWire
 [PipeWire](https://wiki.archlinux.org/title/PipeWire) это новый мультимедийный фреймворк низкого уровня. Он призван обеспечить захват и воспроизведение как аудио, так и видео с минимальной задержкой и поддержкой приложений на основе PulseAudio, JACK, ALSA и GStreamer.
