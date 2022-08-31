@@ -368,7 +368,7 @@ sudo systemctl enable sshd.service
 ```
 ### Audio утилиты & Bluetooth
 ```
-sudo pacman -S alsa-utils bluez bluez-utils
+sudo pacman -S alsa-utils bluez bluez-utils pulseaudio-bluetooth
 ```
 Пакеты | Описание
 --------- | ----------
@@ -416,3 +416,69 @@ git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
 ```
+### Установка [Zsh](https://wiki.archlinux.org/index.php/zsh/) 
+Одна из современных командных оболочек UNIX, использующаяся непосредственно как интерактивная оболочка, либо как скриптовый интерпретатор.
+```
+sudo pacman -S zsh zsh-completions
+```
+Прочтите *[ здесь ](#install-oh-my-zsh)* для настройки тем для Zsh. Читайте ниже, как изменить свой SHELL.
+
+###  Изменение вашей оболочки
+Сначала проверьте текущую оболочку, запустив:
+```
+echo $SHELL
+```
+
+####  Чтобы получить список всех доступных/установленных SHELL:
+```
+chsh -l
+```
+
+###  Установите Zsh в качестве нашей оболочки по умолчанию.
+```
+chsh -s /usr/bin/zsh
+```
+Чтобы изменения вступили в силу, нужно будет выйти из системы и снова войти в систему или, что еще лучше, выполнить «перезагрузку».
+
+## PipeWire
+[PipeWire](https://wiki.archlinux.org/title/PipeWire) это новый мультимедийный фреймворк низкого уровня. Он призван обеспечить захват и воспроизведение как аудио, так и видео с минимальной задержкой и поддержкой приложений на основе PulseAudio, JACK, ALSA и GStreamer.
+#### Установка
+```
+sudo pacman -S pipewire
+```
+
+## EasyEffects
+[EasyEffects](https://wiki.archlinux.org/title/PipeWire#EasyEffects) (PulseEffects) это утилита GTK, которая предоставляет большой набор звуковых эффектов и фильтров для отдельных выходных потоков приложений и входных потоков микрофона. Известные эффекты включают эквалайзер ввода / вывода, выравнивание громкости на выходе и усиление басов, а также подключаемый модуль подавления шума на входе.
+#### Установка
+```
+sudo pacman -S easyeffects
+или
+yay -S easyeffects-git
+```
+> Это установит pipewire-pulse и заменит PulseAudio на PipeWire.
+
+## Темы и настройки
+
+### Установка [Oh My Zsh](https://ohmyz.sh/) 
+Oh My Zsh — это управляемая сообществом платформа с открытым исходным кодом для управления вашей конфигурацией Zsh.
+```
+sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+```
+###  Скачать тему [ Powerlevel10k ](https://github.com/romkatv/powerlevel10k/) для Oh My Zsh
+```
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+```
+#### Скачать рекомендуемые шрифты
+```
+yay -S ttf-dejavu ttf-meslo-nerd-font-powerlevel10k
+```
+Также установите шрифт терминала Konsole на `MesloGS-NF-Regular`.
+
+#### Установите Powerlevel10k в качестве темы Zsh
+```
+nano ~/.zshrc
+```
+Найдите строку, начинающуюся с `ZSH_THEME="...."` , и замените имя темы, чтобы строка теперь выглядела так: `ZSH_THEME="powerlevel10k/powerlevel10k"` Теперь выполните `source ~/.zshrc` .`source ~/.zshrc`.
+
+#### Настройка
+> ***Для новых пользователей*** при первом запуске мастер настройки Powerlevel10k задаст вам несколько вопросов и настроит подсказку. Если он не запускается автоматически, введите «p10k configure». Мастер настройки создает `~/.p10k.zsh` на основе ваших предпочтений. Дополнительную настройку подсказки можно выполнить, отредактировав этот файл. Он содержит множество комментариев, которые помогут вам ориентироваться в параметрах конфигурации.
