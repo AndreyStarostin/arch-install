@@ -422,7 +422,7 @@ sudo systemctl enable bluetooth.service
 Вы можете установить все следующие пакеты или только тот, который вам нужен.
 #### Установка через pacman
 ```
-sudo pacman -S chromium openssh qbittorrent audacious screen wget git neofetch plasma-browser-integration telegram-desktop
+sudo pacman -S chromium openssh qbittorrent audacious screen wget git neofetch plasma-browser-integration telegram-desktop flameshot xf86-input-synaptics
 ```
 #### Установка через yay
 ```
@@ -441,7 +441,7 @@ neofetch | Инструмент системной информации из к�
 telegram-desktop | Telegram мессенджер.
 skypeforlinux-stable-bin | Skype мессенджер.
 flameshot | Программа для создания скриншотов
-xf86-input-synaptics | Драйвер для тачпада
+xf86-input-synaptics | Драйвер для тачпада.
 
 ### Приложения для работы
 
