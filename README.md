@@ -440,6 +440,7 @@ git | Утилиты командной строки Github.
 neofetch | Инструмент системной информации из командной строки.
 telegram-desktop | Telegram мессенджер.
 skypeforlinux-stable-bin | Skype мессенджер.
+flameshot | Программа для создания скриншотов
 
 ### Приложения для работы
 
