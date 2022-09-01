@@ -580,3 +580,61 @@ When = PostTransaction
 Exec = /usr/bin/paccache -r
 ```
 Сохранить и выйти.
+
+### Docker
+#### Установка
+```
+sudo pacman -S docker
+```
+#### Запуск службы
+```
+sudo systemctl enable --now docker
+```
+#### Настройка
+```
+sudo groupadd docker
+sudo usermod -aG docker $USER
+```
+Каждый пользователь в группе docker имеет права, равноценные правам суперпользователя.
+
+### Kubectl
+#### Установка
+Загрузить последнюю версию:
+```
+curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+```
+Для загрузки определенной версии (1.25.0), используйте следующую команду:
+```
+curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.25.0/bin/linux/amd64/kubectl
+```
+Сделать двоичный файл kubectl исполняемым:
+```
+chmod +x ./kubectl
+```
+Переместить двоичный файл в директорию из переменной окружения PATH:
+```
+sudo mv ./kubectl /usr/local/bin/kubectl
+```
+Проверка работоспособности:
+```
+kubectl version --client
+```
+#### Настройка автодополнения
+Скрипт дополнения ввода kubectl для Zsh может быть сгенерирован с помощью команды:
+```
+kubectl completion zsh
+```
+Чтобы подключить его во все сессии командной оболочки, добавьте следующую строчку в файл ```~/.zshrc```:
+```
+source <(kubectl completion zsh)
+```
+Добавить алиас "k" для команды kubectl:
+```
+echo 'alias k=kubectl' >>~/.zshrc
+echo 'compdef __start_kubectl k' >>~/.zshrc
+```
+Если появляется такая ошибка как ```complete:13: command not found: compdef```, то добавьте следующее содержимое в начало вашего файла ```~/.zshrc```:
+```
+autoload -Uz compinit
+compinit
+```
