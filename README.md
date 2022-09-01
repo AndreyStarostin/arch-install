@@ -437,7 +437,7 @@ skypeforlinux-stable-bin | Skype мессенджер
 
 #### Установка через pacman
 ```
-sudo pacman -S libreoffice-still okular remmina virtualbox virtualbox-host-dkms pycharm-community-edition
+sudo pacman -S libreoffice-still okular remmina libvncserver freerdp virtualbox virtualbox-host-dkms pycharm-community-edition
 ```
 #### Установка через yay
 ```
