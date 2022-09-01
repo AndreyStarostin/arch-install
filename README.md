@@ -38,7 +38,8 @@
     * [Установка и настройка Oh My Zsh](#установка-и-настройка-oh-my-zsh)
     * [Поддержка принтеров](#поддержка-принтеров)
     * [PipeWire](#pipewire)
-    * [EasyEffects](#EasyEffects)
+    * [EasyEffects](#easyeffects)
+    * [Paccache](#paccache)
     
 </br>
 
@@ -381,8 +382,9 @@ kate | Текстовый редактор.
 kcalc | Калькулятор.
 krunner | Быстрый поиск и запуск приложений.
 partitionmanager | Диспетчер дисков и разделов KDE.
-plasma-nm | Настройка громкости KDE
-plasma-pa | Настройка сети KDE
+packagekit-qt5 | Привязки Qt5 для PackageKit.
+plasma-nm | Настройка громкости KDE.
+plasma-pa | Настройка сети KDE.
 openssh | ssh сервер.
 
 #### Включить службу OpenSSH
@@ -518,3 +520,41 @@ yay -S easyeffects-git
 ```
 > Это установит pipewire-pulse и заменит PulseAudio на PipeWire.
 
+### Paccache
+Очистка кэша pacman
+
+#### Установка
+```
+sudo pacman -S pacman-contrib
+```
+#### Узнать количество и размер кэшированных пакеров
+```
+sudo ls /var/cache/pacman/pkg/ | wc -l
+du -sh /var/cache/pacman/pkg/
+```
+#### Очистка кэша вручную
+```
+sudo paccache -rk 3
+```
+k указывает на сохранение кол-во версии каждого пакета в кэше.
+
+#### Автоматическая очмистка кэша
+Создайте файл в `/etc/pacman.d/hooks`
+```
+sudo mkdir /etc/pacman.d/hooks
+sudo nano /etc/pacman.d/hooks/clean_cache.hook
+```
+Добавьте в него следующие строки
+```
+[Trigger]
+Operation = Upgrade
+Operation = Install
+Operation = Remove
+Type = Package
+Target = *
+[Action]
+Description = Cleaning pacman cache...
+When = PostTransaction
+Exec = /usr/bin/paccache -r
+```
+Сохранить и выйти.
