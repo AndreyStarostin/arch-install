@@ -546,11 +546,19 @@ sudo systemctl enable --now cups
 ```
 
 ### PipeWire
-[PipeWire](https://wiki.archlinux.org/title/PipeWire) это новый мультимедийный фреймворк низкого уровня. Он призван обеспечить захват и воспроизведение как аудио, так и видео с минимальной задержкой и поддержкой приложений на основе PulseAudio, JACK, ALSA и GStreamer.
+[PipeWire]([https://wiki.archlinux.org/title/PipeWire](https://wiki.archlinux.org/title/PipeWire_(%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9))) это новый мультимедийный фреймворк низкого уровня. Он призван обеспечить захват и воспроизведение как аудио, так и видео с минимальной задержкой и поддержкой приложений на основе PulseAudio, JACK, ALSA и GStreamer.
 #### Установка
 ```
-sudo pacman -S pipewire
+sudo pacman -S pipewire pipewire-pulse pipewire-alsa
 ```
+Пакеты | Описание
+--------- | ----------
+pipewire | Мультимедийный фреймворк низкого уровня
+pipewire-pulse | Этот пакет заменит установленные pulseaudio и pulseaudio-bluetooth.
+pipewire-alsa | Перенаправления приложений, использующих ALSA API, через PipeWire.
+> Необходимо перезагрузиться или выполнить ```systemctl start --user pipewire-pulse.service``` для работы.
+
+> Для управления Bluetooth audio устройствами PipeWire использует pipewire-pulse. Говоря более конкретно, сервис PipeWire проверяет наличие /etc/pipewire/media-session.d/with-pulseaudio и подключает модуль bluez автоматически, если он установлен в системе.
 
 ### Paccache
 Очистка кэша pacman
