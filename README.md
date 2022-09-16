@@ -425,6 +425,8 @@ sudo systemctl enable bluetooth.service
 sudo pacman -S chromium openssh qbittorrent audacious screen wget git neofetch plasma-browser-integration telegram-desktop flameshot xf86-input-synaptics
 ```
 #### Установка через yay
+> Должен быть установлен пакет **[Yay](#yay)**
+
 ```
 yay -S skypeforlinux-stable-bin
 ```
@@ -450,6 +452,8 @@ xf86-input-synaptics | Драйвер для тачпада.
 sudo pacman -S libreoffice-still okular remmina libvncserver freerdp virtualbox virtualbox-host-dkms pycharm-community-edition
 ```
 #### Установка через yay
+> Должен быть установлен пакет **[Yay](#yay)**
+
 ```
 yay -S anydesk-bin teamviewer
 ```
@@ -516,6 +520,8 @@ sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O 
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 ```
 #### Скачать рекомендуемые шрифты
+> Должен быть установлен пакет **[Yay](#yay)**
+
 ```
 yay -S ttf-dejavu ttf-meslo-nerd-font-powerlevel10k
 ```
