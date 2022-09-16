@@ -372,7 +372,7 @@ sudo systemctl enable sddm
 ```
 ### Установка KDE Plasma и основных приложений
 ```
-sudo pacman -S plasma konsole dolphin ark kate kcalc krunner partitionmanager packagekit-qt5 plasma-nm plasma-pa sddm-kcm plasma-pantfs-3g aspell-ru aspell-en ufw openssh
+sudo pacman -S plasma konsole dolphin ark kate kcalc krunner partitionmanager packagekit-qt5 plasma-nm plasma-pa sddm-kcm ntfs-3g aspell-ru aspell-en ufw openssh
 ```
 Пакеты | Описание
 --------- | ----------
